@@ -14,7 +14,7 @@ shinyUI(
       sidebarPanel(width = 3,
         checkboxInput("data1", HTML("<font color='red'>Data1</font>"), FALSE),
         conditionalPanel(condition="input.data1",
-                         radioButtons("seluploaddata1", NULL, c("NULL" = "1", "Upload input date" = "2","Paste input date" = "3"), "1"),
+                         radioButtons("seluploaddata1", NULL, c("NULL" = "1", "Upload input data" = "2","Paste input data" = "3"), "1"),
                          conditionalPanel(condition="input.seluploaddata1 == '2'",
                                           fileInput("uploaddata1",h5("Upload data1:",
                                                                      bsButton("bsb01", label="", icon=icon("question"), style="info", size="small")
@@ -49,7 +49,7 @@ shinyUI(
                                                                        
         checkboxInput("data2", HTML("<font color='red'>Data2</font>"), FALSE),
         conditionalPanel(condition="input.data2",
-                         radioButtons("seluploaddata2", NULL, c("NULL" = "1", "Upload input date" = "2","Paste input date" = "3"), "1"),
+                         radioButtons("seluploaddata2", NULL, c("NULL" = "1", "Upload input data" = "2","Paste input data" = "3"), "1"),
                          conditionalPanel(condition="input.seluploaddata2 == '2'",
                                           fileInput("uploaddata2",h5("Upload data2:",
                                                                      bsButton("bsb07", label="", icon=icon("question"), style="info", size="small")
@@ -84,7 +84,7 @@ shinyUI(
         
         checkboxInput("data3", HTML("<font color='red'>Data3</font>"), FALSE),
         conditionalPanel(condition="input.data3",
-                         radioButtons("seluploaddata3", NULL, c("NULL" = "1", "Upload input date" = "2","Paste input date" = "3"), "1"),
+                         radioButtons("seluploaddata3", NULL, c("NULL" = "1", "Upload input data" = "2","Paste input data" = "3"), "1"),
                          conditionalPanel(condition="input.seluploaddata3 == '2'",
                                           fileInput("uploaddata3",h5("Upload data3:",
                                                                      bsButton("bsb13", label="", icon=icon("question"), style="info", size="small")
@@ -119,7 +119,7 @@ shinyUI(
         
         checkboxInput("data4", HTML("<font color='red'>Data4</font>"), FALSE),
         conditionalPanel(condition="input.data4",
-                         radioButtons("seluploaddata4", NULL, c("NULL" = "1", "Upload input date" = "2","Paste input date" = "3"), "1"),
+                         radioButtons("seluploaddata4", NULL, c("NULL" = "1", "Upload input data" = "2","Paste input data" = "3"), "1"),
                          conditionalPanel(condition="input.seluploaddata4 == '2'",
                                           fileInput("uploaddata4",h5("Upload data4:",
                                                                      bsButton("bsb19", label="", icon=icon("question"), style="info", size="small")
@@ -154,7 +154,7 @@ shinyUI(
         
         checkboxInput("data5", HTML("<font color='red'>Data5</font>"), FALSE),
         conditionalPanel(condition="input.data5",
-                         radioButtons("seluploaddata5", NULL, c("NULL" = "1", "Upload input date" = "2","Paste input date" = "3"), "1"),
+                         radioButtons("seluploaddata5", NULL, c("NULL" = "1", "Upload input data" = "2","Paste input data" = "3"), "1"),
                          conditionalPanel(condition="input.seluploaddata5 == '2'",
                                           fileInput("uploaddata5",h5("Upload data5:",
                                                                      bsButton("bsb25", label="", icon=icon("question"), style="info", size="small")
@@ -189,7 +189,7 @@ shinyUI(
         
         checkboxInput("data6", HTML("<font color='red'>Data6</font>"), FALSE),
         conditionalPanel(condition="input.data6",
-                         radioButtons("seluploaddata6", NULL, c("NULL" = "1", "Upload input date" = "2","Paste input date" = "3"), "1"),
+                         radioButtons("seluploaddata6", NULL, c("NULL" = "1", "Upload input data" = "2","Paste input data" = "3"), "1"),
                          conditionalPanel(condition="input.seluploaddata6 == '2'",
                                           fileInput("uploaddata6",h5("Upload data6:",
                                                                      bsButton("bsb31", label="", icon=icon("question"), style="info", size="small")
@@ -224,7 +224,7 @@ shinyUI(
         
         checkboxInput("data7", HTML("<font color='red'>Data7</font>"), FALSE),
         conditionalPanel(condition="input.data7",
-                         radioButtons("seluploaddata7", NULL, c("NULL" = "1", "Upload input date" = "2","Paste input date" = "3"), "1"),
+                         radioButtons("seluploaddata7", NULL, c("NULL" = "1", "Upload input data" = "2","Paste input data" = "3"), "1"),
                          conditionalPanel(condition="input.seluploaddata7 == '2'",
                                           fileInput("uploaddata7",h5("Upload data7:",
                                                                      bsButton("bsb37", label="", icon=icon("question"), style="info", size="small")
