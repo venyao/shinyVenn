@@ -1,4 +1,3 @@
-
 options(shiny.maxRequestSize = 200*1024^2)
 
 shinyServer(function(input, output, session) {
@@ -13,18 +12,32 @@ shinyServer(function(input, output, session) {
         data1 <- NULL
         data1name <- NULL
         color1<-NULL
+        
+        
         if(input$seluploaddata1 == "2" && !is.null(input$uploaddata1)){
           data1 <- readLines(input$uploaddata1$datapath)
           data1name <- input$Data1name
           color1<-input$color1cus
+          if (input$data1 == TRUE && length(data1) == 0) {
+            sendSweetAlert(
+              session = session,
+              title = "Error !!",
+              text = "The file can't be empty.",
+              type = "error"
+            ) 
+          }
         }else {
           NULL
         }
+        
+        
         if(input$seluploaddata1 == "3" && !is.null(input$pastedata1)){
           data1 <- unlist(strsplit(input$pastedata1,split="\\n"))
           data1name <- input$Data1name
           color1<-input$color1cus
-        }else {
+        }
+       
+        else {
           NULL
         }
         
@@ -35,6 +48,14 @@ shinyServer(function(input, output, session) {
           data2 <- readLines(input$uploaddata2$datapath)
           data2name <- input$Data2name
           color2<-input$color2cus
+          if (input$data2 == TRUE && length(data2) == 0) {
+            sendSweetAlert(
+              session = session,
+              title = "Error !!",
+              text = "The file can't be empty.",
+              type = "error"
+            ) 
+          }
         }else {
           NULL
         }
@@ -42,7 +63,8 @@ shinyServer(function(input, output, session) {
           data2 <- unlist(strsplit(input$pastedata2,split="\\n"))
           data2name <- input$Data2name
           color2<-input$color2cus
-        }else {
+        }
+        else {
           NULL
         }
         
@@ -53,6 +75,14 @@ shinyServer(function(input, output, session) {
           data3 <- readLines(input$uploaddata3$datapath)
           data3name <- input$Data3name
           color3<-input$color3cus
+          if (input$data3 == TRUE && length(data3) == 0) {
+            sendSweetAlert(
+              session = session,
+              title = "Error !!",
+              text = "The file can't be empty.",
+              type = "error"
+            ) 
+          }
         }else {
           NULL
         }
@@ -71,6 +101,14 @@ shinyServer(function(input, output, session) {
           data4 <- readLines(input$uploaddata4$datapath)
           data4name <- input$Data4name
           color4<-input$color4cus
+          if (input$data4 == TRUE && length(data4) == 0) {
+            sendSweetAlert(
+              session = session,
+              title = "Error !!",
+              text = "The file can't be empty.",
+              type = "error"
+            ) 
+          }
         }else {
           NULL
         }
@@ -78,7 +116,8 @@ shinyServer(function(input, output, session) {
           data4 <- unlist(strsplit(input$pastedata4,split="\\n"))
           data4name <- input$Data4name
           color4<-input$color4cus
-        }else {
+        }
+        else {
           NULL
         }
         
@@ -89,6 +128,14 @@ shinyServer(function(input, output, session) {
           data5 <- readLines(input$uploaddata5$datapath)
           data5name <- input$Data5name
           color5<-input$color5cus
+          if (input$data5 == TRUE && length(data5) == 0) {
+            sendSweetAlert(
+              session = session,
+              title = "Error !!",
+              text = "The file can't be empty.",
+              type = "error"
+            ) 
+          }
         }else {
           NULL
         }
@@ -99,7 +146,7 @@ shinyServer(function(input, output, session) {
         }else {
           NULL
         }
-        
+       
         data6 <- NULL
         data6name <- NULL
         color6<-NULL
@@ -107,6 +154,14 @@ shinyServer(function(input, output, session) {
           data6 <- readLines(input$uploaddata6$datapath)
           data6name <- input$Data6name
           color6<-input$color6cus
+          if (input$data6 == TRUE && length(data6) == 0) {
+            sendSweetAlert(
+              session = session,
+              title = "Error !!",
+              text = "The file can't be empty.",
+              type = "error"
+            ) 
+          }
         }else {
           NULL
         }
@@ -125,6 +180,14 @@ shinyServer(function(input, output, session) {
           data7 <- readLines(input$uploaddata7$datapath)
           data7name <- input$Data7name
           color7<-input$color7cus
+          if (input$data7 == TRUE && length(data7) == 0) {
+            sendSweetAlert(
+              session = session,
+              title = "Error !!",
+              text = "The file can't be empty.",
+              type = "error"
+            ) 
+          }
         }else {
           NULL
         }
@@ -132,9 +195,11 @@ shinyServer(function(input, output, session) {
           data7 <- unlist(strsplit(input$pastedata7,split="\\n"))
           data7name <- input$Data7name
           color7<-input$color7cus
+          
         }else {
           NULL
         }
+        
         
         venn.list <- list(data1,data2,data3,data4,data5,data6,data7)
         venn.list[sapply(venn.list,is.null)] <- NULL
@@ -148,8 +213,8 @@ shinyServer(function(input, output, session) {
         
         
         output$venn <- renderPlot({
-          venn::venn(venn.list, zcolor = color, cexil = input$textsize, ilabels=TRUE, snames = data.name.vec,
-                     cexsn=input$labelsize)
+          venn::venn(venn.list, zcolor = color, sncs = input$textsize, ilabels=TRUE, snames = data.name.vec,
+                     ilcs = input$labelsize)
         }, height = venn.height, width = venn.width)
         
         
@@ -158,8 +223,8 @@ shinyServer(function(input, output, session) {
           filename <- function() { paste('venn.pdf') },
           content <- function(file) {
             pdf(file, width = venn.width/72, height = venn.height/72)
-            venn::venn(venn.list, zcolor = color, cexil = input$textsize, ilabels=TRUE, snames = data.name.vec,
-                       cexsn=input$labelsize)
+            venn::venn(venn.list, zcolor = color, sncs = input$textsize, ilabels=TRUE, snames = data.name.vec,
+                       ilcs = input$labelsize)
             dev.off()
           }, contentType = 'application/pdf')
         
@@ -169,8 +234,8 @@ shinyServer(function(input, output, session) {
           filename <- function() { paste('venn.svg') },
           content <- function(file) {
             svg(file, width = venn.width/72, height = venn.height/72)
-            venn::venn(venn.list, zcolor = color, cexil = input$textsize, ilabels=TRUE, snames = data.name.vec,
-                       cexsn=input$labelsize)
+            venn::venn(venn.list, zcolor = color, sncs = input$textsize, ilabels=TRUE, snames = data.name.vec,
+                       ilcs = input$labelsize)
             dev.off()
           }, contentType = 'image/svg')
         
@@ -180,8 +245,8 @@ shinyServer(function(input, output, session) {
           content <- function(file) {
             ff <- tempfile()
             png(filename=ff)
-            file.csv<-venn::venn(venn.list, zcolor = color, cexil = input$textsize, ilabels=TRUE, snames = data.name.vec,
-                                 cexsn=input$labelsize)
+            file.csv<-venn::venn(venn.list, zcolor = color, sncs = input$textsize, ilabels=TRUE, snames = data.name.vec,
+                                 ilcs = input$labelsize)
             dev.off()
             unlink(ff)
             file.csv1<-attr(file.csv,"intersections")
