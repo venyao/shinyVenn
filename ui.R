@@ -1,8 +1,4 @@
 
-library(shinythemes)
-library(shinyBS)
-library(shiny)
-library(shinyWidgets)
 
 shinyUI(
   navbarPage(

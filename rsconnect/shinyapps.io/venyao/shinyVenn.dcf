@@ -1,0 +1,12 @@
+name: shinyVenn
+title: shinyVenn
+username:
+account: venyao
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3805248
+bundleId: 4356178
+url: https://venyao.shinyapps.io/shinyVenn/
+when: 1615948614.59911
+asMultiple: FALSE
+asStatic: FALSE
